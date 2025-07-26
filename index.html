@@ -1,0 +1,110 @@
+<!-- index.html: Punto de entrada principal para el juego Defender la Torre -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Etiquetas meta para codificación de caracteres y diseño responsivo -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defender la Torre - Sistema Completo</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Enlace a Font Awesome 6 Free para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Contenedor principal para la disposición del juego -->
+    <div class="container">
+        <!-- Sección de encabezado con título y descripción del juego -->
+        <div class="header">
+            <h1>🏰 Defender la Torre 🏰</h1>
+            <p>Sistema completo con PHP, HTML, CSS, JS y JSON</p>
+        </div>
+
+        <!-- Sección del juego que contiene el lienzo y la barra lateral -->
+        <div class="game-section">
+            <!-- Área del juego con el lienzo y elementos de la interfaz -->
+            <div class="game-area">
+                <div id="gameContainer">
+                    <!-- Lienzo donde se renderiza el juego -->
+                    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+                    <!-- Interfaz del juego que muestra estadísticas del jugador -->
+                    <div id="gameUI">
+                        <div class="stats">👤 Jugador: <span id="playerName">Anónimo</span></div>
+                        <div class="stats">💰 Oro: <span id="gold">100</span></div>
+                        <div class="stats">❤️ Vida: <span id="health">100</span></div>
+                        <div class="stats">🎯 Puntos: <span id="score">0</span></div>
+                    </div>
+
+                    <!-- Indicador de oleada que muestra la oleada actual y el conteo de enemigos -->
+                    <div class="wave-indicator">
+                        <div class="stats">🌊 Oleada: <span id="wave">1</span></div>
+                        <div class="stats">👹 Enemigos: <span id="enemies">0</span></div>
+                    </div>
+
+                    <!-- Pantalla de fin del juego, oculta por defecto -->
+                    <div id="gameOver">
+                        <h2>¡Juego Terminado!</h2>
+                        <p>Puntuación Final: <span id="finalScore">0</span></p>
+                        <p>Oleada Alcanzada: <span id="finalWave">1</span></p>
+                        <button class="control-btn" onclick="saveScore()">Guardar Puntuación</button>
+                        <button class="control-btn" onclick="resetGame()">Jugar de Nuevo</button>
+                    </div>
+                </div>
+
+                <!-- Botones de control para acciones del juego -->
+                <div id="controls">
+                    <button class="control-btn tower-btn" onclick="selectTower('basic')">Torre Básica (20💰)</button>
+                    <button class="control-btn tower-btn" onclick="selectTower('strong')">Torre Fuerte (50💰)</button>
+                    <button class="control-btn tower-btn" onclick="selectTower('fast')">Torre Rápida (30💰)</button>
+                    <button class="control-btn tower-btn" onclick="selectTower('sniper')">Torre Francotirador (80💰)</button>
+                    <button class="control-btn" onclick="startWave()">Iniciar Oleada</button>
+                    <button class="control-btn" onclick="saveGame()">Guardar Juego</button>
+                    <button class="control-btn" onclick="loadGame()">Cargar Juego</button>
+                    <button class="control-btn" onclick="resetGame()">Reiniciar</button>
+                </div>
+            </div>
+
+            <!-- Barra lateral con información del jugador, estadísticas y tabla de clasificación -->
+            <div class="sidebar">
+                <!-- Formulario para establecer el nombre del jugador -->
+                <div class="player-form">
+                    <h3>👤 Información del Jugador</h3>
+                    <input type="text" id="playerNameInput" placeholder="Tu nombre" maxlength="20">
+                    <button class="control-btn" onclick="setPlayerName()">Establecer Nombre</button>
+                </div>
+
+                <!-- Visualización de estadísticas del juego -->
+                <div class="game-info">
+                    <h3>📊 Estadísticas del Juego</h3>
+                    <div class="stats">Tiempo de Juego: <span id="gameTime">00:00</span></div>
+                    <div class="stats">Enemigos Eliminados: <span id="enemiesKilled">0</span></div>
+                    <div class="stats">Torres Construidas: <span id="towersBuilt">0</span></div>
+                </div>
+
+                <!-- Visualización de la tabla de clasificación -->
+                <div class="leaderboard">
+                    <h3>🏆 Mejores Puntuaciones</h3>
+                    <div id="leaderboardList" class="loading">Cargando...</div>
+                    <button class="control-btn" onclick="loadLeaderboard()">Actualizar</button>
+                </div>
+
+                <!-- Información de las torres -->
+                <div class="game-info">
+                    <h3>🎮 Información de Torres</h3>
+                    <div id="towerInfo">
+                        <div class="stats"><strong>Básica:</strong> Daño: 25, Rango: 80, Velocidad: Media</div>
+                        <div class="stats"><strong>Fuerte:</strong> Daño: 50, Rango: 70, Velocidad: Lenta</div>
+                        <div class="stats"><strong>Rápida:</strong> Daño: 15, Rango: 90, Velocidad: Rápida</div>
+                        <div class="stats"><strong>Francotirador:</strong> Daño: 100, Rango: 150, Velocidad: Muy Lenta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cargar archivos JavaScript para la lógica del juego y simulación de PHP -->
+    <script src="php_simulator.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

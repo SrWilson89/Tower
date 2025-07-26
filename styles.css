@@ -1,0 +1,223 @@
+/* styles.css: Estilos para la interfaz del juego Defender la Torre */
+
+/* Reinicia márgenes y paddings por defecto, usa border-box para un tamaño consistente */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del cuerpo con fondo degradado y configuración de fuente */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal para centrar el contenido */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo del encabezado para el título del juego */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Contenedor flexible para el área del juego y la barra lateral */
+.game-section {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Estilo del área del juego */
+.game-area {
+    flex: 1;
+    min-width: 800px;
+}
+
+/* Estilo de la barra lateral con fondo semitransparente */
+.sidebar {
+    width: 300px;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+/* Contenedor del juego para centrar el lienzo */
+#gameContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo del lienzo con borde y sombra */
+#gameCanvas {
+    border: 3px solid #fff;
+    background: linear-gradient(45deg, #2d5016, #4a7c23);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+/* Estilo de la interfaz del juego superpuesta */
+#gameUI {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+/* Contenedor de botones de control */
+#controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Estilo general de los botones */
+.control-btn {
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
+}
+
+/* Estilo específico para botones de torres */
+.tower-btn {
+    background: linear-gradient(45deg, #4834d4, #686de0);
+    box-shadow: 0 4px 15px rgba(72, 52, 212, 0.4);
+}
+
+.tower-btn:hover {
+    box-shadow: 0 6px 20px rgba(72, 52, 212, 0.6);
+}
+
+/* Estilo del indicador de oleada */
+.wave-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+/* Estilo de visualización de estadísticas */
+.stats {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Estilo de la sección de tabla de clasificación */
+.leaderboard {
+    margin-bottom: 20px;
+}
+
+.leaderboard h3 {
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+/* Estilo de las entradas de la tabla de clasificación */
+.leaderboard-entry {
+    background: rgba(255,255,255,0.1);
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo del formulario del jugador */
+.player-form {
+    margin-bottom: 20px;
+}
+
+.player-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.player-form input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+/* Estilo de la pantalla de fin del juego */
+#gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.9);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    display: none;
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+
+/* Estilo de la sección de información del juego */
+.game-info {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo del estado de carga */
+.loading {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Diseño responsivo para pantallas más pequeñas */
+@media (max-width: 1024px) {
+    .game-section {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .game-area {
+        min-width: auto;
+    }
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+}

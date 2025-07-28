@@ -1,428 +1,199 @@
-/* Estilo base del cuerpo - Establece el fondo y la tipografía general */
+/* Estilos generales */
 body {
     margin: 0;
-    padding: 20px;
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #2b2d6e 0%, #4a6cd4 100%); /* Fondo degradado más vibrante */
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    color: white;
     min-height: 100vh;
-    color: #f0f4f8;
-    overflow-x: hidden; /* Evita desbordamiento horizontal */
 }
 
-/* Prueba para verificar la carga del CSS */
-body {
-    border: 5px solid red !important;
-}
-
-/* Contenedor principal - Centra el contenido y limita el ancho */
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Título principal - Estiliza el título con un efecto de sombra suave */
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    letter-spacing: 1px;
-    animation: fadeIn 1s ease-in-out; /* Animación de entrada suave */
+/* Canvas del juego */
+.game-container {
+    position: relative;
+    display: inline-block;
 }
 
-/* Animación de entrada para el título */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Descripción del juego - Mejora la legibilidad y añade un efecto de opacidad */
-.description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    opacity: 0.85;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Área de juego - Organiza los elementos del juego con flexbox */
-.game-area {
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-/* Canvas del juego - Añade un borde brillante y sombra para destacar */
 #gameCanvas {
-    border: 4px solid #f0f4f8;
-    background: #1a7736; /* Verde más vibrante para el campo */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.2); /* Sombra y brillo */
-    border-radius: 12px;
-    cursor: crosshair;
-    transition: transform 0.3s ease; /* Transición suave al interactuar */
+    border: 2px solid white;
+    background-color: #2a5a2a;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    display: block;
 }
 
-/* Efecto al pasar el ratón por el canvas */
-#gameCanvas:hover {
-    transform: scale(1.02); /* Ligero aumento de tamaño */
-}
-
-/* Interfaz de usuario superpuesta - Estiliza la UI en el canvas */
+/* Interfaz de usuario del juego */
 .game-ui {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    background: rgba(20, 20, 40, 0.8); /* Fondo oscuro semitransparente */
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 15px;
-    backdrop-filter: blur(8px); /* Efecto de desenfoque mejorado */
-    z-index: 10;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
 }
 
-/* Fila de elementos de la UI */
-.ui-row {
+.stats {
+    margin-bottom: 10px;
+}
+
+.stats div {
+    margin: 5px 0;
+}
+
+.controls {
     display: flex;
-    gap: 20px;
-    margin-bottom: 8px;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Elementos individuales de la UI */
-.ui-item {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background 0.3s ease;
-}
-
-/* Efecto hover para elementos de la UI */
-.ui-item:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-/* Controles de torres - Estiliza el contenedor de selección de torres */
-.tower-controls {
-    margin-bottom: 20px;
-}
-
-/* Título de los controles de torres */
-.tower-controls h3 {
-    margin: 0 0 12px 0;
-    color: #a1d6ff; /* Azul claro más vibrante */
-    font-size: 1.4rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Contenedor de botones de torres */
 .tower-buttons {
     display: flex;
-    gap: 12px;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
-/* Botones de torres - Estilo moderno con animaciones */
-.tower-btn {
-    background: linear-gradient(45deg, #4a6cd4, #7b9eff);
-    color: #f0f4f8;
+.game-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* Botones */
+button {
+    padding: 8px 12px;
     border: none;
-    padding: 12px 18px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
+    font-weight: bold;
+    transition: all 0.2s;
 }
 
-/* Efecto hover para botones de torres */
+button:hover {
+    transform: scale(1.05);
+}
+
+.tower-btn {
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: white;
+}
+
 .tower-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #7b9eff, #a1d6ff);
+    background: linear-gradient(135deg, #182848, #4b6cb7);
 }
 
-/* Efecto de brillo al pasar el ratón */
-.tower-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transition: left 0.5s ease;
+#startWave {
+    background: linear-gradient(135deg, #f46b45, #eea849);
 }
 
-.tower-btn:hover::after {
-    left: 100%;
+#startWave:hover {
+    background: linear-gradient(135deg, #eea849, #f46b45);
 }
 
-/* Estilo para el botón seleccionado */
-.tower-btn.selected {
-    background: linear-gradient(45deg, #ffd700, #ffaa00);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-    transform: translateY(-3px);
+#pauseGame, #restartGame {
+    background: linear-gradient(135deg, #c31432, #240b36);
+    color: white;
 }
 
-/* Controles del juego - Estiliza los botones de control */
-.game-controls {
+#pauseGame:hover, #restartGame:hover {
+    background: linear-gradient(135deg, #240b36, #c31432);
+}
+
+/* Barra lateral */
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: white;
+}
+
+.player-info, .game-stats, .tower-info {
     margin-bottom: 20px;
 }
 
-/* Botones de control - Diseño vibrante con animaciones */
-.control-btn {
-    background: linear-gradient(45deg, #ff5733, #ff8c66);
-    color: #f0f4f8;
+.player-info input {
+    padding: 8px;
     border: none;
-    padding: 14px 24px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    margin: 6px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 70%;
 }
 
-/* Efecto hover para botones de control */
-.control-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #ff8c66, #ff3333);
+#updateName {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: white;
 }
 
-/* Efecto de brillo al pasar el ratón */
-.control-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transition: left 0.5s ease;
+.tower-stats div {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }
 
-.control-btn:hover::after {
-    left: 100%;
-}
-
-/* Estilo para botones deshabilitados */
-.control-btn:disabled {
-    background: #555566;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
-/* Barra lateral - Contenedor de configuración y estadísticas */
-.sidebar {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(12px); /* Desenfoque más pronunciado */
-    padding: 25px;
-    border-radius: 16px;
-    width: 300px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
-
-/* Efecto hover para la barra lateral */
-.sidebar:hover {
-    transform: translateY(-5px);
-}
-
-/* Título de la barra lateral */
-.sidebar h3 {
-    color: #a1d6ff;
-    margin-top: 0;
-    margin-bottom: 18px;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-/* Campo de entrada para el nombre del jugador */
-.sidebar input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #2b2d6e;
-    font-size: 15px;
-    margin-bottom: 18px;
-    transition: box-shadow 0.3s ease;
-}
-
-/* Efecto focus para el campo de entrada */
-.sidebar input:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(123, 158, 255, 0.5);
-}
-
-/* Contenedor de estadísticas */
-.stats {
-    background: rgba(20, 20, 40, 0.4);
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-}
-
-/* Elementos de estadísticas */
-.stat-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-/* Información de torres */
-.tower-info {
-    background: rgba(20, 20, 40, 0.4);
-    padding: 18px;
-    border-radius: 12px;
-    font-size: 13px;
-}
-
-/* Tipos de torres */
-.tower-type {
-    margin-bottom: 12px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
-    transition: background 0.3s ease;
-}
-
-/* Efecto hover para tipos de torres */
-.tower-type:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-/* Pantalla de Game Over - Diseño moderno con animación */
+/* Pantalla de Game Over */
 .game-over {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(20, 20, 40, 0.95);
-    color: #f0f4f8;
-    padding: 50px;
-    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    z-index: 1000;
+    z-index: 100;
     display: none;
-    animation: popIn 0.5s ease-out; /* Animación de entrada */
 }
 
-/* Animación de entrada para la pantalla de Game Over */
-@keyframes popIn {
-    from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-
-/* Título de la pantalla de Game Over */
 .game-over h2 {
-    color: #ff5733;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 25px;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    color: #ff3333;
+    margin-top: 0;
 }
 
-/* Párrafos de la pantalla de Game Over */
-.game-over p {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+#restartFromGameOver {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
 }
 
-/* Diseño responsivo - Ajustes para pantallas pequeñas */
-@media (max-width: 768px) {
-    .game-area {
+/* Diseño responsivo */
+@media (max-width: 900px) {
+    .game-container {
+        display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
-    }
-    
-    #gameCanvas {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
     }
     
     .sidebar {
         width: 100%;
-        max-width: 350px;
-        padding: 20px;
+        box-sizing: border-box;
     }
     
     .tower-buttons {
-        justify-content: center;
-        gap: 10px;
+        flex-direction: column;
     }
     
-    h1 {
-        font-size: 2.2rem;
-    }
-    
-    .game-ui {
-        font-size: 13px;
-        padding: 10px;
-    }
-    
-    .ui-row {
-        gap: 10px;
-    }
-    
-    .ui-item {
-        padding: 6px 8px;
+    .game-buttons {
+        flex-direction: column;
     }
 }
 
-/* Diseño para pantallas muy pequeñas (móviles) */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    .description {
-        font-size: 1rem;
-    }
-    
-    .tower-btn, .control-btn {
-        padding: 10px 14px;
-        font-size: 12px;
-    }
-    
-    .sidebar {
-        padding: 15px;
+@media (max-width: 500px) {
+    #gameCanvas {
+        width: 100%;
+        height: auto;
     }
 }
